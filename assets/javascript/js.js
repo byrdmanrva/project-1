@@ -24,6 +24,14 @@ $(document).ready(function () {
             $("#results").append("</br>- " + response.drinks[0].strMeasure5 + response.drinks[0].strIngredient5);
             $("#results").append("</br>- " + response.drinks[0].strMeasure6 + response.drinks[0].strIngredient6);
             $("#results").append("</br>- " + response.drinks[0].strMeasure7 + response.drinks[0].strIngredient7);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure8 + response.drinks[0].strIngredient8);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure9 + response.drinks[0].strIngredient9);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure10 + response.drinks[0].strIngredient10);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure11 + response.drinks[0].strIngredient11);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure12 + response.drinks[0].strIngredient12);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure13 + response.drinks[0].strIngredient13);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure14 + response.drinks[0].strIngredient14);
+            $("#results").append("</br>- " + response.drinks[0].strMeasure15 + response.drinks[0].strIngredient15);
             $("#results").append("</br> Instructions: " + response.drinks[0].strInstructions);
             $("#results").append(drinkImage);
         })
