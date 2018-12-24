@@ -1,21 +1,148 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Drink API Test</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-    <script src="assets/javascript/js.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
-</head>
-<body>
-        <input type="text" name="search-term" id="search"><br>
-        <button type="button" id="search-button">Search</button>
 
-        <div class="container" id="results"></div>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Drink API Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Boostrap Stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+  <!-- style css -->
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <video autoplay muted loop id="food-video">
+    <source src="assets/images/food.mp4" type="video/mp4">
+  </video>
+
+  <video autoplay muted loop id="drink-video">
+    <source src="assets/images/drink.mp4" type="video/mp4">
+  </video>
+
+  <div class="jumbotron jumbotron-fluid" id="jumbo">
+    <div class="container">
+      <h1 class="display-4">Meal & Drink</h1>
+      <p class="lead">
+        This is a modified jumbotron that occupies the entire horizontal space
+        of its parent.
+      </p>
+    </div>
+  </div>
+  <div class="timer">timer for cook</div>
+
+  <div class="row">
+    <div class="col-sm-12 sample-list">
+      <span class="sample-food">
+        <img src="assets/images/00.jpg" alt="food" class="sample">
+        <img src="assets/images/05.jpg" alt="food" class="sample">
+        <img src="assets/images/02.jpg" alt="food" class="sample">
+        <img src="assets/images/03.jpg" alt="food" class="sample">
+        <img src="assets/images/04.jpg" alt="food" class="sample">
+      </span>
+
+      <span class="sample-drink">
+        <img src="assets/images/12.jpg" alt="drink" class="sample">
+        <img src="assets/images/13.jpg" alt="drink" class="sample">
+        <img src="assets/images/14.jpg" alt="drink" class="sample">
+        <img src="assets/images/15.jpg" alt="drink" class="sample">
+        <img src="assets/images/16.jpg" alt="drink" class="sample">
+      </span>
+      <br>
+      <!-- --------------the clickable pictures list above---------- -->
+    </div>
+  </div>
+
+  <div class="row">
+    <!--=============== left ===============-->
+    <div class="col-sm-6 content" id="left-side">
+      <!-- food search - random - home buttons -->
+      <div id="left-default">
+        food
+        <div class="input-group mb-3">
+          <input type="text" name="search-term" placeholder="Meal Name" class="form-control food-search-input" id="food-search"
+            aria-label="Recipient's username" aria-describedby="food-search-button" />
+          <div class="input-group-append"></div>
+          <button type="button" class="btn btn-outline-light search-button" id="food-search-button">
+            <i class="fas fa-utensils"></i>
+          </button>
+        </div> &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light random-button" id="food-random-button">Random <i class="fas fa-dice"></i>
+        </button> &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light home-button">Go Back <i class="fas fa-undo-alt"></i></button>
+      </div>
+
+      <!-- when click "DRINK(right side)", show information here!!! -->
+      <div class="results" id="drink-results"></div>
+
+      <!-- when click search: show photo and video of food -->
+      <img class="results" id="food-photo" src="#" alt=""></img>
+
+    </div>
+
+    <!--=============== right ===============-->
+    <div class="col-sm-6 content" id="right-side">
+      <div id="right-default">
+        drink
+        <div class="input-group mb-3">
+          <input type="text" name="search-term" placeholder="Drink Name" class="form-control drink-search-input" id="drink-search"
+            aria-label="Recipient's username" aria-describedby="drink-search-button" />
+          <div class="input-group-append"></div>
+          <button type="button" class="btn btn-outline-light search-button" id="drink-search-button">
+            <i class="fas fa-cocktail"></i>
+          </button>
+        </div> &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light random-button" id="drink-random-button">Random <i class="fas fa-dice"></i>
+        </button> &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light home-button">Go Back <i class="fas fa-undo-alt"></i></button>
+      </div>
+
+      <!-- when click "FOOD(left side)", show information here!!! -->
+      <div class="results" id="food-results"></div>
+
+      <!--  when click search: show photo and video of drink -->
+      <img class="results" id="drink-photo" src="#" alt=""></img>
+    </div>
+  </div>
+
+  <!-- jquery & javascript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="assets/javascript/js.js"></script>
 </body>
+
+<footer>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="foot-references">
+        <li>MealDB API</li>
+        <li>TheCockTailDB API</li>
+      </ul>
+
+      <ul class="foot-contacts">
+        <li>David Byrd</li>
+        <li>James Lamb</li>
+        <li>Abdullah Alamri</li>
+        <li>Isaac Wu</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="cp-right">Copyright &copy; 2018 The Expert Coders</div>
+    </div>
+  </div>
+</footer>
+
 </html>
