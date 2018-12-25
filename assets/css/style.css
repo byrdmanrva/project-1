@@ -2,7 +2,7 @@
 #jumbo{
   opacity: .8;
   font-family: 'Pacifico', cursive;
-
+  margin: 0;
 }
 
 #food-video, #drink-video {
@@ -34,22 +34,11 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-.sample-food{
-  width: 50%;
-  position: relative;
-  float: left;
-}
-.sample-drink{
-  width: 50%;
-  position: relative;
-  float: right;
-}
-
 .sample{
-  height: 100px;
+  float: left;
+  width: 8%;
+  margin: 3% 1%;
   border-radius: 50%;
-  margin: 1% 1% 4% 4%;
-  /* padding: 0 1%; */
 }
 
 .mb-3{
@@ -108,4 +97,17 @@ footer {
   font-size: 14px;
   color: grey;
   height: 20px;
+}
+
+
+@media (max-width: 575px){
+
+  .display-4{
+    font-size: 16px;
+    font-weight: bolder;
+  }
+  .lead{
+    font-size: 10px;
+  }
+
 }
