@@ -3,6 +3,11 @@
   opacity: .8;
   font-family: 'Pacifico', cursive;
   margin: 0;
+  padding: 3% 0% 6%;
+}
+
+.display-4{
+margin: 2% 0;
 }
 
 #food-video, #drink-video {
@@ -18,76 +23,60 @@
 .lead {
   float: left;
   position: relative;
+  margin:0;
 }
 
-.timer {
-  position: fixed;
-  float: right;
-  height: 100px;
-  width: 100px;
-  text-align: center;
-  padding: 20px;
-  top: 10%;
-  right: 5%;
-  z-index: 1;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-}
-
+/* sample list */
 .sample{
   float: left;
   width: 8%;
-  margin: 3% 1%;
+  margin: 3% 1% 1%;
   border-radius: 50%;
 }
 
-.mb-3{
-  width: 100%;
-  padding: 0% 10%;
-}
-
+/* content */
 .content {
   text-align: center;
   height: auto;
   padding: 20px 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
 }
 
-#left-side {
+#left-side, #right-side {
   background: rgb(243, 207, 207);
-  height: 600px;
   overflow: auto;
+  width: 100%;
+  padding-bottom: 2%;
 }
 #right-side {
   background: rgb(211, 202, 243);
-  height: 600px;
-  overflow: auto;
+}
+
+.form-set{
+  width: 100%;
 }
 
 #food-photo, #drink-photo {
-  width: 50%;
-  height: auto;
-  margin: 0;
+  width: 80%;
+  padding-bottom: 1%;
+  margin: 5%;
 }
 
 .results {
-  background: rgba(48, 48, 48, 0.03);
+  /* background: rgba(48, 48, 48, 0.03); */
   margin: 10px 50px;
-  font-family: 'Pacifico', cursive;
-
 }
 
-.foot-references{
-  padding: 2% 12%;
-  position: relative;
-  float: left;
+/* timer */
+.timer {
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+  z-index: 1;
 }
 
-.foot-contacts{
-  padding: 2% 12%;
-  position: relative;
-  float: right;
-}
-
+/* footer */
 footer {
   z-index: 10;
   background: white;
@@ -99,15 +88,26 @@ footer {
   height: 20px;
 }
 
+.foot-references, .foot-contacts{
+  width: 50%;
+  margin-top: 1%;
+  position: relative;
+  float: left;
+}
 
 @media (max-width: 575px){
 
+  #jumbo{
+    padding-bottom: 15%;
+  }
+
   .display-4{
-    font-size: 16px;
+    font-size: 14px !important;
     font-weight: bolder;
+    margin:0;
   }
   .lead{
-    font-size: 10px;
+    font-size: 10px !important;
   }
 
 }
