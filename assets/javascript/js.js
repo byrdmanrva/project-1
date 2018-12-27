@@ -1,27 +1,56 @@
-var searchTerm = "";
 
 $(document).ready(function () {
 
-  //==============================
-  // Click back to home button
-  //==============================
-  $(".home-button").on("click", function () {
-    location.reload();
-  });
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBSuG4ZNaUt9ZWeVmGmc8N7UCzo11Sc0UQ",
+    authDomain: "project-1-1545354673886.firebaseapp.com",
+    databaseURL: "https://project-1-1545354673886.firebaseio.com",
+    projectId: "project-1-1545354673886",
+    storageBucket: "",
+    messagingSenderId: "585680953544"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
 
   //==============================
-  // Click Food search (Left side)
+  // Click Search Meal(Left side)
   //==============================
   $("#food-search-button").on("click", function () {
+    $("#drink-video").css("display", "none");
+    $("#food-video").css("display", "block");
+    $(".video-play").empty();
     event.preventDefault();
 
-    searchTerm = $("#food-search").val();
+    // api:
+    var searchTerm = $("#food-search").val();
     var foodQueryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + searchTerm;
     $.ajax({
       url: foodQueryURL,
       method: "GET"
     }).then(function (response) {
+
+      // firebase:
+      // database.ref("/mealDB").set({
+      //   video: response.meals[0].strYoutube,
+      // })
+      // database.ref("/mealDB").on("value", function (snapshot) {
+      //   var apiMVideo = snapshot.val().video;
+
+      // left side changes:
       $("#food-photo").attr("src", response.meals[0].strMealThumb);
+      $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>')
+
+      //==============================
+      // Click Video Button(Left side)
+      //==============================
+      var videoID = response.meals[0].strYoutube.split('v=')[1];
+      var VideoLink = "https://www.youtube.com/embed/" + videoID
+
+      $(".switch-video").on("click", function () {
+        $(".switch-video").empty();
+        $(".video-play").html('<iframe width="80%" src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>');
+      })
 
       // right side changes:
       $("#right-default").hide();
@@ -52,29 +81,41 @@ $(document).ready(function () {
       if (response.meals[0].strIngredient18.length > 0) { $("#food-results").append(response.meals[0].strMeasure18 + response.meals[0].strIngredient18 + "; ") };
       if (response.meals[0].strIngredient19.length > 0) { $("#food-results").append(response.meals[0].strMeasure19 + response.meals[0].strIngredient19 + "; ") };
       if (response.meals[0].strIngredient20.length > 0) { $("#food-results").append(response.meals[0].strMeasure20 + response.meals[0].strIngredient20 + "; ") };
-
-      //jumbotron change:
-      $("#drink-video").css("display", "none");
-      $("#food-video").css("display", "block");
     })
   });
 
   //==============================
-  // Click Random Food (Left side)
+  // Click Random Meal(Left side)
   //==============================
   $("#food-random-button").on("click", function () {
+    $("#drink-video").css("display", "none");
+    $("#food-video").css("display", "block");
+    $(".video-play").empty();
     event.preventDefault();
 
     $.ajax({
       url: "https://www.themealdb.com/api/json/v1/1/random.php",
       method: "GET"
     }).then(function (response) {
+
+      // left side changes:
       $("#food-photo").attr("src", response.meals[0].strMealThumb);
+      $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>')
+
+      //==============================
+      // Click Video Button(Left side)
+      //==============================
+      var videoID = response.meals[0].strYoutube.split('v=')[1];
+      var VideoLink = "https://www.youtube.com/embed/" + videoID
+
+      $(".switch-video").on("click", function () {
+        $(".switch-video").empty();
+        $(".video-play").html('<iframe width="80%" src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>');
+      })
 
       // right side changes:
       $("#right-default").hide();
       $("#food-results").empty();
-      $("#food-results").append(searchTerm);
       $("#food-results").append("<h4>Meal: " + response.meals[0].strMeal + "</h4>");
       $("#food-results").append("</br> Area: " + response.meals[0].strArea);
       $("#food-results").append("</br> Category: " + response.meals[0].strCategory + "</br>");
@@ -100,42 +141,22 @@ $(document).ready(function () {
       if (response.meals[0].strIngredient18.length > 0) { $("#food-results").append(response.meals[0].strMeasure18 + response.meals[0].strIngredient18 + "; ") };
       if (response.meals[0].strIngredient19.length > 0) { $("#food-results").append(response.meals[0].strMeasure19 + response.meals[0].strIngredient19 + "; ") };
       if (response.meals[0].strIngredient20.length > 0) { $("#food-results").append(response.meals[0].strMeasure20 + response.meals[0].strIngredient20 + "; ") };
-
-      //jumbotron change:
-      $("#drink-video").css("display", "none");
-      $("#food-video").css("display", "block");
     })
   });
 
+  //===========================================↑↑ Food ↑↑=========================================================================================================================
+  //===========================================================================↓↓ Drink ↓↓========================================================================================
 
   //==============================
-  // Click Food search picture (Left side)
-  //==============================
-  // $("#food-photo").on("click", function () {
-  //   $("#food-photo").attr("src", "")
-  // })
-
-  //==============================
-  // Click Sample Food (Left side)
-  //==============================
-  $(".sample-food").on("click", function () {
-    $("#drink-video").css("display", "none");
-    $("#food-video").css("display", "block");
-  })
-
-
-  //=============================== Food =========================================================================================================================
-  //=================================================================== Drink ====================================================================================
-
-  //==============================
-  // Click Drink search (right side)
+  // Click Search Drink(right side)
   //==============================
   $("#drink-search-button").on("click", function () {
+    $("#food-video").css("display", "none");
+    $("#drink-video").css("display", "block");
     event.preventDefault();
 
     searchTerm = $("#drink-search").val();
     var drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchTerm;
-    // if (searchTerm.length > 0) {
     $.ajax({
       url: drinkQueryURL,
       method: "GET"
@@ -164,18 +185,15 @@ $(document).ready(function () {
       if (response.drinks[0].strIngredient13.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure13 + response.drinks[0].strIngredient13 + "<br>") };
       if (response.drinks[0].strIngredient14.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure14 + response.drinks[0].strIngredient14 + "<br>") };
       if (response.drinks[0].strIngredient15.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure15 + response.drinks[0].strIngredient15 + "<br>") };
-
-      //jumbotron change:
-      $("#food-video").css("display", "none");
-      $("#drink-video").css("display", "block");
     });
   });
 
-
   //==============================
-  // Click Random Drink (right side)
+  // Click Random Drink(right side)
   //==============================
   $("#drink-random-button").on("click", function () {
+    $("#food-video").css("display", "none");
+    $("#drink-video").css("display", "block");
     event.preventDefault();
 
     $.ajax({
@@ -206,19 +224,25 @@ $(document).ready(function () {
       if (response.drinks[0].strIngredient13.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure13 + response.drinks[0].strIngredient13 + "<br>") };
       if (response.drinks[0].strIngredient14.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure14 + response.drinks[0].strIngredient14 + "<br>") };
       if (response.drinks[0].strIngredient15.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure15 + response.drinks[0].strIngredient15 + "<br>") };
-
-      //jumbotron change:
-      $("#food-video").css("display", "none");
-      $("#drink-video").css("display", "block");
     });
   });
 
   //==============================
-  // Click Sample Drink (right side)
+  // Click Sample Pictures
   //==============================
   $(".sample-drink").on("click", function () {
     $("#food-video").css("display", "none");
     $("#drink-video").css("display", "block");
   })
+  $(".sample-food").on("click", function () {
+    $("#drink-video").css("display", "none");
+    $("#food-video").css("display", "block");
+  })
 
+  //==============================
+  // Click back to home button
+  //==============================
+  $(".home-button").on("click", function () {
+    location.reload();
+  });
 })
