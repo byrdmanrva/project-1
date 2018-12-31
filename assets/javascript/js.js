@@ -42,7 +42,7 @@ $(document).ready(function () {
       $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>')
 
       //==============================
-      // Click Video Button(Left side)
+      // Click Video Button(in Searching page)
       //==============================
       var videoID = response.meals[0].strYoutube.split('v=')[1];
       var VideoLink = "https://www.youtube.com/embed/" + videoID
@@ -82,6 +82,21 @@ $(document).ready(function () {
       if (response.meals[0].strIngredient19.length > 0) { $("#food-results").append(response.meals[0].strMeasure19 + response.meals[0].strIngredient19 + "; ") };
       if (response.meals[0].strIngredient20.length > 0) { $("#food-results").append(response.meals[0].strMeasure20 + response.meals[0].strIngredient20 + "; ") };
     })
+
+    // other recommended:
+    var recommendURL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + searchTerm;
+    $.ajax({
+      url: recommendURL,
+      method: "GET"
+    }).then(function (response) {
+      $("#food-recommend").empty();
+      if (response.meals.length > 1) {
+        $("#food-recommend").html("<br><div>Also Recommended:</div>")
+        for (var i = 0; i < response.meals.length; i++) {
+          $("#food-recommend").append("&star; " + response.meals[i].strMeal + "<br>");
+        }
+      }
+    })
   });
 
   //==============================
@@ -103,7 +118,7 @@ $(document).ready(function () {
       $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>')
 
       //==============================
-      // Click Video Button(Left side)
+      // Click Video Button(in Random Page)
       //==============================
       var videoID = response.meals[0].strYoutube.split('v=')[1];
       var VideoLink = "https://www.youtube.com/embed/" + videoID
@@ -144,8 +159,8 @@ $(document).ready(function () {
     })
   });
 
-  //===========================================↑↑ Food ↑↑=========================================================================================================================
-  //===========================================================================↓↓ Drink ↓↓========================================================================================
+  //===========================================↑↑ Meal ↑↑=========================================================================================================================
+  //===========================================↓↓ Drink ↓↓========================================================================================================================
 
   //==============================
   // Click Search Drink(right side)
@@ -185,6 +200,13 @@ $(document).ready(function () {
       if (response.drinks[0].strIngredient13.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure13 + response.drinks[0].strIngredient13 + "<br>") };
       if (response.drinks[0].strIngredient14.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure14 + response.drinks[0].strIngredient14 + "<br>") };
       if (response.drinks[0].strIngredient15.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure15 + response.drinks[0].strIngredient15 + "<br>") };
+      // other recommended:
+      if (response.drinks.length > 1) {
+        $("#drink-results").append("<br><div>Recommended:</div>")
+        for (var i = 0; i < response.drinks.length; i++) {
+          $("#drink-results").append("&star; " + response.drinks[i].strDrink + "<br>");
+        }
+      }
     });
   });
 
