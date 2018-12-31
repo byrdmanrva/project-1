@@ -40,7 +40,7 @@ $(document).ready(function () {
       //   var apiMVideo = snapshot.val().video;
 
       // left side changes:
-      $("#food-photo").attr("src", response.meals[0].strMealThumb);
+      $(".food-photo-container").html('<img src="' + response.meals[0].strMealThumb + '" alt="" id="food-photo"></img>');
       $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>')
 
       //==============================
@@ -118,7 +118,7 @@ $(document).ready(function () {
     }).then(function (response) {
 
       // left side changes:
-      $("#food-photo").attr("src", response.meals[0].strMealThumb);
+      $(".food-photo-container").html('<img src="' + response.meals[0].strMealThumb + '" alt="" id="food-photo"></img>');
       $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>')
 
       //==============================
@@ -182,6 +182,7 @@ $(document).ready(function () {
       url: drinkQueryURL,
       method: "GET"
     }).then(function (response) {
+      $(".drink-photo-container").html('<img src="' + response.drinks[0].strDrinkThumb + '" alt="" id="drink-photo"></img>');
       $("#drink-photo").attr("src", response.drinks[0].strDrinkThumb);
 
       // left side changes:
@@ -232,7 +233,7 @@ $(document).ready(function () {
       url: "https://www.thecocktaildb.com/api/json/v1/1/random.php",
       method: "GET"
     }).then(function (response) {
-      $("#drink-photo").attr("src", response.drinks[0].strDrinkThumb);
+      $(".drink-photo-container").html('<img src="' + response.drinks[0].strDrinkThumb + '" alt="" id="drink-photo"></img>');
 
       // left side changes:
       $("#left-default").hide();
