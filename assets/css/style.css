@@ -42,26 +42,44 @@ margin: 2% 0;
   padding: 20px 0;
   font-family: 'Pacifico', cursive;
   font-size: 16px;
+  color:white;
 }
 
-#left-side, #right-side {
-  background: rgb(243, 207, 207);
+#left-side {
+  background-image: url(../images/21.gif);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   overflow: auto;
   width: 100%;
   padding-bottom: 2%;
+  margin:1px 0;
 }
 #right-side {
-  background: rgb(211, 202, 243);
+  background-image: url(../images/22.gif);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: auto;
+  width: 100%;
+  padding-bottom: 2%;
+  margin:1px 0;
 }
 
 .form-set{
   width: 100%;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(214, 240, 238) !important;
+  opacity: 1 !important; /* Firefox */
+}
+.search-input{
+  color: white !important;
 }
 
 #food-photo, #drink-photo {
   width: 80%;
   padding-bottom: 1%;
   margin: 5%;
+  border-radius: 20%;
 }
 
 .switch-video{

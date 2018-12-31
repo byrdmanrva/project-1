@@ -19,6 +19,8 @@ $(document).ready(function () {
   $("#food-search-button").on("click", function () {
     $("#drink-video").css("display", "none");
     $("#food-video").css("display", "block");
+    $("#left-side").css("background-image","url(assets/images/31.jpg)")
+    $("#right-side").css("background-image","url(assets/images/31.jpg)")
     $(".video-play").empty();
     event.preventDefault();
 
@@ -105,6 +107,8 @@ $(document).ready(function () {
   $("#food-random-button").on("click", function () {
     $("#drink-video").css("display", "none");
     $("#food-video").css("display", "block");
+    $("#left-side").css("background-image","url(assets/images/31.jpg)")
+    $("#right-side").css("background-image","url(assets/images/31.jpg)")
     $(".video-play").empty();
     event.preventDefault();
 
@@ -168,6 +172,8 @@ $(document).ready(function () {
   $("#drink-search-button").on("click", function () {
     $("#food-video").css("display", "none");
     $("#drink-video").css("display", "block");
+    $("#left-side").css("background-image","url(assets/images/31.jpg)")
+    $("#right-side").css("background-image","url(assets/images/31.jpg)")
     event.preventDefault();
 
     searchTerm = $("#drink-search").val();
@@ -181,8 +187,9 @@ $(document).ready(function () {
       // left side changes:
       $("#left-default").hide();
       $("#drink-results").empty();
-      $("#drink-results").append("<h4>Drink: " + response.drinks[0].strDrink + "</h4></br>");
-      $("#drink-results").append("</br> Glass type: " + response.drinks[0].strGlass);
+      $("#drink-results").append("<h4>Drink: " + response.drinks[0].strDrink + "</h4>");
+      $("#drink-results").append("</br>Alcoholic: " + response.drinks[0].strAlcoholic + "</br>");
+      $("#drink-results").append("</br> Glass type: " + response.drinks[0].strGlass + "</br>");
       $("#drink-results").append("</br> Instructions: </br> " + response.drinks[0].strInstructions + "</br>");
       $("#drink-results").append("</br> Ingredients:</br>");
       if (response.drinks[0].strIngredient1.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure1 + response.drinks[0].strIngredient1 + "<br>") };
@@ -216,6 +223,9 @@ $(document).ready(function () {
   $("#drink-random-button").on("click", function () {
     $("#food-video").css("display", "none");
     $("#drink-video").css("display", "block");
+    $("#left-side").css("background-image","url(assets/images/31.jpg)")
+    $("#right-side").css("background-image","url(assets/images/31.jpg)")
+
     event.preventDefault();
 
     $.ajax({
@@ -227,8 +237,9 @@ $(document).ready(function () {
       // left side changes:
       $("#left-default").hide();
       $("#drink-results").empty();
-      $("#drink-results").append("<h4>Drink: " + response.drinks[0].strDrink + "</h4></br>");
-      $("#drink-results").append("</br> Glass type: " + response.drinks[0].strGlass);
+      $("#drink-results").append("<h4>Drink: " + response.drinks[0].strDrink + "</h4>");
+      $("#drink-results").append("</br>Alcoholic: " + response.drinks[0].strAlcoholic + "</br>");
+      $("#drink-results").append("</br> Glass type: " + response.drinks[0].strGlass + "</br>");
       $("#drink-results").append("</br> Instructions: </br> " + response.drinks[0].strInstructions + "</br>");
       $("#drink-results").append("</br> Ingredients:</br>");
       if (response.drinks[0].strIngredient1.length > 0) { $("#drink-results").append(response.drinks[0].strMeasure1 + response.drinks[0].strIngredient1 + "<br>") };
