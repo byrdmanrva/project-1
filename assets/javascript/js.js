@@ -17,8 +17,6 @@ $(document).ready(function () {
   // Click Search Meal(Left side)
   //==============================
   $("#food-search-button").on("click", function () {
-    // $("#drink-video").css("display", "none");
-    // $("#food-video").css("display", "block");
     $(".bg-gif").css("background-image", "url(assets/images/food.gif)")
     $("#left-side").css("background-image", "url(assets/images/31.jpg)")
     $("#right-side").css("background-image", "url(assets/images/31.jpg)")
@@ -33,13 +31,6 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
 
-      // firebase:
-      // database.ref("/mealDB").set({
-      //   video: response.meals[0].strYoutube,
-      // })
-      // database.ref("/mealDB").on("value", function (snapshot) {
-      //   var apiMVideo = snapshot.val().video;
-
       // left side changes:
       $(".food-photo-container").html('<img src="' + response.meals[0].strMealThumb + '" alt="" id="food-photo" class="wow fadeInLeft"></img>');
       $(".switch-video").html('<a class="btn-floating btn-large red pulse"><i class="material-icons">movie</i></a>');
@@ -53,7 +44,7 @@ $(document).ready(function () {
       $(".switch-video").on("click", function () {
         $(".switch-video").empty();
         $(".food-photo-container").empty();
-        $(".video-play").html('<iframe width="80%" src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>');
+        $(".video-play").html('<iframe src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>');
       })
 
       // right side changes:
@@ -106,8 +97,6 @@ $(document).ready(function () {
   // Click Random Meal(Left side)
   //==============================
   $("#food-random-button").on("click", function () {
-    // $("#drink-video").css("display", "none");
-    // $("#food-video").css("display", "block");
     $(".bg-gif").css("background-image", "url(assets/images/food.gif)")
     $("#left-side").css("background-image", "url(assets/images/31.jpg)")
     $("#right-side").css("background-image", "url(assets/images/31.jpg)")
@@ -173,8 +162,6 @@ $(document).ready(function () {
   // Click Search Drink(right side)
   //==============================
   $("#drink-search-button").on("click", function () {
-    // $("#food-video").css("display", "none");
-    // $("#drink-video").css("display", "block");
     $(".bg-gif").css("background-image", "url(assets/images/drink.gif)")
     $("#left-side").css("background-image", "url(assets/images/31.jpg)")
     $("#right-side").css("background-image", "url(assets/images/31.jpg)")
@@ -227,8 +214,6 @@ $(document).ready(function () {
   // Click Random Drink(right side)
   //==============================
   $("#drink-random-button").on("click", function () {
-    // $("#food-video").css("display", "none");
-    // $("#drink-video").css("display", "block");
     $(".bg-gif").css("background-image", "url(assets/images/drink.gif)")
     $("#left-side").css("background-image", "url(assets/images/31.jpg)")
     $("#right-side").css("background-image", "url(assets/images/31.jpg)")
@@ -273,15 +258,9 @@ $(document).ready(function () {
   // Click Sample Pictures
   //==============================
   // $(".sample-drink").on("click", function () {
-    // $("#food-video").css("display", "none");
-    // $("#drink-video").css("display", "block");
-
     // $(".bg-gif").css("background-image", "url(assets/images/drink.gif)")
   // })
   // $(".sample-food").on("click", function () {
-    // $("#drink-video").css("display", "none");
-    // $("#food-video").css("display", "block");
-
     // $(".bg-gif").css("background-image", "url(assets/images/food.gif)")
   // })
 
