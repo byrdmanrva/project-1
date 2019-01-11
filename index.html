@@ -27,6 +27,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <!-- mp4 background -->
   <video autoplay muted loop id="food-video">
     <source src="assets/images/fire.mp4" type="video/mp4">
@@ -65,9 +66,90 @@
         </span>
         <br>
       </div>
+=======
+  <div class="bg-gif">
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid" id="jumbo">
+      <div class="container">
+        <h1 class="display-4 wow flash" data-wow-delay="4s" data-wow-iteration="4">Meal & Drink</h1>
+        <p class="lead wow bounceInLeft" data-wow-delay="5s">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+      </div>
+    </div>
+    <!-- sample list -->
+    <div class="row sample-row">
+      <div class="col-sm-12 sample-list">
+        <span class="sample-food">
+          <img src="assets/images/00.jpg" alt="food" class="sample wow zoomInDown" data-wow-duration="2s">
+          <img src="assets/images/05.jpg" alt="food" class="sample wow zoomInDown" data-wow-duration="2.25s">
+          <img src="assets/images/02.jpg" alt="food" class="sample wow zoomInDown" data-wow-duration="2.5s">
+          <img src="assets/images/03.jpg" alt="food" class="sample wow zoomInDown" data-wow-duration="2.75s">
+          <img src="assets/images/04.jpg" alt="food" class="sample wow zoomInDown" data-wow-duration="3s">
+        </span>
+        <span class="sample-drink">
+          <img src="assets/images/12.jpg" alt="drink" class="sample wow zoomInDown" data-wow-duration="4s">
+          <img src="assets/images/13.jpg" alt="drink" class="sample wow zoomInDown" data-wow-duration="4.25s">
+          <img src="assets/images/14.jpg" alt="drink" class="sample wow zoomInDown" data-wow-duration="4.5s">
+          <img src="assets/images/15.jpg" alt="drink" class="sample wow zoomInDown" data-wow-duration="4.75s">
+          <img src="assets/images/16.jpg" alt="drink" class="sample wow zoomInDown" data-wow-duration="5s">
+        </span>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!--=============== left ===============-->
+    <div class="col-sm-6 content" id="left-side">
+      <!-- food search - random - home buttons -->
+      <div id="left-default">
+        <h4> meal <i class="fas fa-utensils"></i></h4><br><br>
+        <form class="input-group mb-3 form-set">
+          <input type="text" name="search-term" placeholder="Meal Name/Ingredient :" class="form-control search-input" id="food-search">
+          <input type="submit" value="Go" class="btn search-button light-green darken-3" id="food-search-button">
+        </form>
+        <button type="button" class="btn waves-effect waves-light random-button" id="food-random-button">Random<i class="fas fa-dice"></i></button>
+        &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn waves-effect waves-light home-button">Go Back <i class="fas fa-undo-alt"></i></button>
+      </div>
+
+      <!-- when click "DRINK(right side)", show information here!!! -->
+      <div class="results" id="drink-results"></div>
+
+      <!-- when click search: show Meal photo and video-->
+      <div class="switch-video"></div>
+      <div class="video-play"></div>
+      <div class="food-photo-container"></div>
+    </div>
+
+    <!--=============== right ===============-->
+    <div class="col-sm-6 content" id="right-side">
+      <div id="right-default">
+        <h4> drink<i class="fas fa-cocktail"></i></h4><br><br>
+        <form class="form-set input-group mb-3">
+          <input type="text" name="search-term" placeholder="Drink Name/Ingredient :" class="form-control search-input"
+            id="drink-search">
+          <input type="submit" value="Go" class="btn search-button lime darken-3" id="drink-search-button">
+        </form>
+        <button type="button" class="btn waves-effect waves-light random-button" id="drink-random-button">Random<i
+            class="fas fa-dice"></i></button>
+        &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn waves-effect waves-light home-button">Go Back <i class="fas fa-undo-alt"></i></button>
+      </div>
+
+      <!-- when click "FOOD(left side)", show information here!!! -->
+      <div class="results" id="food-results"></div>
+      <div class="results" id="food-recommend"></div>
+
+      <!--  when click search: show photo and video of drink -->
+      <div class="drink-photo-container"></div>
+>>>>>>> master
     </div>
 
     <div class="row">
+<<<<<<< HEAD
       <!--=============== left ===============-->
       <div class="col-sm-6 content wow zoomInRight" id="left-side">
         <!-- food search - random - home buttons -->
@@ -107,6 +189,22 @@
 
         <!--  when click search: show photo and video of drink -->
         <img class="results" id="drink-photo" src="#" alt="">
+=======
+      <div class="col-sm-12">
+        <ul class="foot-references">
+          -- Reference --
+          <li>MealDB API</li>
+          <li>TheCockTailDB API</li>
+        </ul>
+
+        <ul class="foot-contacts">
+          -- The Expert Coders --
+          <li>David Byrd</li>
+          <li>James Lamb</li>
+          <li>Abdullah Alamri</li>
+          <li>Isaac Wu</li>
+        </ul>
+>>>>>>> master
       </div>
     </div>
 
